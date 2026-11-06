@@ -5,11 +5,13 @@ import Description from "@/components/Description";
 
 
 function Home() {
+
+  let hidenDescription = true;
   return (
     <div>
       <main>
         <Header text="Hello From Main  " />
-        <Description/>
+        { hidenDescription && <Description/>}
       </main>
     </div>
   );
