@@ -3,6 +3,8 @@ import Image from "next/image";
 import Header from "@/components/Header"
 import Description from "@/components/Description";
 import style from "./page.module.css";
+import Link from "next/link";
+
 
 
 function Home() {
@@ -14,6 +16,8 @@ function Home() {
       <main className={style.section}>
         <Header text="Hello From Main  " />
         { hidenDescription && <Description/>}
+
+        <Link href="/about">Go to About</Link>
       </main>
     </div>
   );
