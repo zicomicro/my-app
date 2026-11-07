@@ -1,23 +1,35 @@
-import Head from "next/head";
-import Image from "next/image";
-import Header from "@/components/Header"
-import Description from "@/components/Description";
-import style from "./page.module.css";
-import Link from "next/link";
+'use client'
+import { useEffect,useState } from "react";
 
 
 
 function Home() {
 
-  console.log(style.section);
+
+  const [counter , setCounter] = useState<number>(0);
+  const [success , setSuccess] = useState<boolean>(false);
+
+function handelClick () {
+  setCounter(counter + 1);
+  if(counter === 10) {
+    setSuccess(true);
+  }
+}
+useEffect (() =>{
+  
+    console.log("Event has been Triggered");
+  
+  
+}, [success])
+  
   let hidenDescription = true;
   return (
     <div>
-      <main className={style.section}>
-        <Header text="Hello From Main  " />
-        { hidenDescription && <Description/>}
+      <main>
+       <h1>Home</h1>
+       <div>Counter {counter}</div>
+       <button onClick={handelClick}>Click To Increment</button>
 
-        <Link href="/about">Go to About</Link>
       </main>
     </div>
   );
