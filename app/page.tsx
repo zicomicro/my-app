@@ -1,33 +1,30 @@
 'use client'
-import { useEffect,useState } from "react";
+import { useEffect,useRef,useState } from "react";
 
 
 
 function Home() {
 
 
-  const [counter , setCounter] = useState<number>(0);
-  const [success , setSuccess] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-function handelClick () {
-  setCounter(counter + 1);
-  if(counter === 10) {
-    setSuccess(true);
+  const handelClick = () => {
+    if(inputRef.current)
+    inputRef.current.focus();
   }
-}
-useEffect (() =>{
-  
-    console.log("Event has been Triggered");
-  
-  
-}, [success])
+
+  function getText(e) {
+    console.log(e.target.value);
+
+  }
   
   let hidenDescription = true;
   return (
     <div>
       <main>
        <h1>Home</h1>
-       <div>Counter {counter}</div>
+      
+       <input ref={inputRef} onChange={getText} />
        <button onClick={handelClick}>Click To Increment</button>
 
       </main>
